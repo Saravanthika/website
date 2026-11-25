@@ -15,14 +15,18 @@
       });
     }
 
-    const whatsappBtn = document.getElementById("whatsappBtn");
-    if (whatsappBtn) {
-      const phone = "919500839097";
-      const text = encodeURIComponent(
-        "Hello TONI&GUY R.S. Puram, I would like to book an appointment."
-      );
-      whatsappBtn.href = `https://wa.me/${phone}?text=${text}`;
-    }
+    const phone = "919500839097";
+    const text = encodeURIComponent(
+      "Hello TONI&GUY R.S. Puram, I would like to book an appointment."
+    );
+    const waUrl = `https://wa.me/${phone}?text=${text}`;
+
+    ["whatsappBtn", "whatsappSectionBtn"].forEach((id) => {
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.href = waUrl;
+      }
+    });
 
     const slides = Array.from(document.querySelectorAll(".hero-slider .slide"));
     if (slides.length <= 1) return;
