@@ -82,7 +82,7 @@
   <section id="reviews" class="section">
     <div class="container">
       <h2>Client Reviews</h2>
-      <p>Rated 4.5 stars across 1k+ Google reviews from clients across R.S. Puram and Coimbatore.</p>
+      <p>Rated 4.5 stars across 999 Google reviews from clients across R.S. Puram and Coimbatore.</p>
     </div>
   </section>
 
@@ -97,11 +97,11 @@
           Near Lawley Road Junction, R.S. Puram<br>
           Coimbatore, Tamil Nadu</p>
           <h3>Parking</h3>
-          <p>Dedicated parking is available on <strong>Cowley Brown Road</strong>, opposite our salon.</p>
+          <p> parking is available on <strong>Cowley Brown Road</strong>, opposite our salon.</p>
         </div>
         <div id="contact">
           <h3>Appointments &amp; Hours</h3>
-          <p>Open Daily: 10:00 AM &ndash; 8:30 PM</p>
+          <p>Open Daily: 10:00 AM &ndash; 9:00 PM</p>
           <a id="whatsappSectionBtn" href="https://wa.me/919500839097" class="btn-primary" target="_blank" rel="noopener">Message on WhatsApp</a>
         </div>
       </div>
@@ -114,17 +114,19 @@
     </div>
   </footer>
 
-  <aside class="floating-actions" aria-label="Quick Contact and Reviews">
-    <a href="tel:+919500839097" class="float-circle float-call" title="Call Salon" aria-label="Call TONI&amp;GUY R.S. Puram">
-      &#9742;
-    </a>
-    <a href="#reviews" class="float-rect" title="1k Google Reviews" aria-label="1k Google reviews for TONI&amp;GUY R.S. Puram">
-      <span class="float-rect-text">1k</span>
-    </a>
-    <a id="whatsappBtn" href="https://wa.me/919500839097" class="float-circle float-wa" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="WhatsApp TONI&amp;GUY R.S. Puram">
-      WA
-    </a>
-  </aside>
+ <aside id="floatingStack" aria-label="Quick Contact and Reviews" style="position: fixed; top: 50%; right: 16px; transform: translateY(-50%); z-index: 999999; display: flex; flex-direction: column; align-items: center; gap: 12px; pointer-events: auto;">
+  <a href="tel:+919500839097" title="Call TONI&amp;GUY R.S. Puram" aria-label="Call TONI&amp;GUY R.S. Puram" style="display: block; width: 50px; height: 50px; border-radius: 50%; overflow: hidden; text-decoration: none; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);">
+    <img src="images/call.png" alt="Call" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </a>
+
+  <a href="#reviews" title="Google Reviews" aria-label="Google Reviews for TONI&amp;GUY R.S. Puram" style="display: block; width: 56px; height: 58px; border-radius: 8px; overflow: hidden; text-decoration: none; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);">
+    <img src="images/review.png" alt="Google Reviews" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </a>
+
+  <a id="whatsappBtn" href="https://wa.me/919500839097" target="_blank" rel="noopener" title="WhatsApp TONI&amp;GUY R.S. Puram" aria-label="WhatsApp TONI&amp;GUY R.S. Puram" style="display: block; width: 50px; height: 50px; border-radius: 50%; overflow: hidden; text-decoration: none; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);">
+    <img src="images/whatapp.png" alt="WhatsApp" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  </a>
+</aside> 
 
   <script src="js/main.js?v=4"></script>
 </body>
