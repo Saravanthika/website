@@ -14,32 +14,69 @@
       margin-top: 20px;
     }
     .category-card {
-      background: #ffffff;
-      border: 2px solid #e5e5e5;
+      position: relative;
+      overflow: hidden;
+      min-height: 165px;
+      background-size: cover;
+      background-position: center top;
+      border: 2px solid transparent;
       border-radius: 12px;
       padding: 22px 18px;
       text-align: center;
+      color: #ffffff;
       cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+    }
+    .category-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 10, 0.82) 10%, rgba(10, 10, 10, 0.35) 100%);
+      z-index: 0;
+      transition: background 0.25s ease;
     }
     .category-card:hover {
-      border-color: #111111;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.65);
     }
     .category-card.active {
-      background: #111111;
+      border-color: #ffffff;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+    }
+    .category-card.active::before {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 15%, rgba(0, 0, 0, 0.45) 100%);
+    }
+    .category-card h3,
+    .category-card span {
+      position: relative;
+      z-index: 1;
       color: #ffffff;
-      border-color: #111111;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
     }
     .category-card h3 {
       margin: 0 0 6px;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
     }
     .category-card span {
       font-size: 0.85rem;
-      opacity: 0.78;
+      opacity: 0.92;
+    }
+    .cat-hair-bg {
+      background-image: url("images/haircut.jpg");
+    }
+    .cat-skin-bg {
+      background-image: url("images/skin.jpg");
+    }
+    .cat-makeup-bg {
+      background-image: url("images/makeup.jpg");
+    }
+    .cat-chemical-bg {
+      background-image: url("images/chemical.jpg");
     }
     .category-panel {
       display: none;
@@ -136,22 +173,22 @@
       <p>Select a category below to view all available services.</p>
 
       <div class="category-grid" role="tablist" aria-label="Service Categories">
-        <button type="button" class="category-card active" data-category="hair" onclick="showCategory('hair', this)">
+        <button type="button" class="category-card cat-hair-bg active" data-category="hair" onclick="showCategory('hair', this)">
           <h3>Hair</h3>
           <span>Click to view services</span>
         </button>
 
-        <button type="button" class="category-card" data-category="skin" onclick="showCategory('skin', this)">
+        <button type="button" class="category-card cat-skin-bg" data-category="skin" onclick="showCategory('skin', this)">
           <h3>Skin</h3>
           <span>Click to view services</span>
         </button>
 
-        <button type="button" class="category-card" data-category="makeup" onclick="showCategory('makeup', this)">
+        <button type="button" class="category-card cat-makeup-bg" data-category="makeup" onclick="showCategory('makeup', this)">
           <h3>Make Up</h3>
           <span>Click to view services</span>
         </button>
 
-        <button type="button" class="category-card" data-category="chemical" onclick="showCategory('chemical', this)">
+        <button type="button" class="category-card cat-chemical-bg" data-category="chemical" onclick="showCategory('chemical', this)">
           <h3>Chemical Treatments</h3>
           <span>Click to view services</span>
         </button>
