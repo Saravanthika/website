@@ -25,11 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
     whatsappBtn.href = `https://wa.me/${phone}?text=${text}`;
   }
 
-  // Hero slider controls (Slide 1 <-> Slide 2)
+  // Hero slider: automatic switch every 10 seconds
   const slides = Array.from(document.querySelectorAll(".hero-slider .slide"));
-  const prevBtn = document.querySelector(".hero-slider .slider-btn.prev");
-  const nextBtn = document.querySelector(".hero-slider .slider-btn.next");
-
   if (!slides.length) return;
 
   let currentIndex = slides.findIndex((slide) =>
@@ -46,11 +43,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showSlide(currentIndex);
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => showSlide(currentIndex - 1));
+  const AUTO_SLIDE_MS = 10000;
+  let timerId = null;
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    if (slides.length > 1) {
+      timerId = setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, AUTO_SLIDE_MS);
+    }
   }
 
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => showSlide(currentIndex + 1));
+  function stopAutoSlide() {
+    if (timerId !== null) {
+      clearInterval(timerId);
+      timerId = null;
+    }
   }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopAutoSlide();
+    } else {
+      startAutoSlide();
+    }
+  });
+
+  startAutoSlide();
 });
