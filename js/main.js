@@ -1,64 +1,51 @@
-(function () {
-  function initSalonSite() {
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
+document.addEventListener("DOMContentLoaded", function () {
+  // Mobile menu toggle
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
 
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("open");
-      });
-
-      navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinks.classList.remove("open");
-        });
-      });
-    }
-
-    const phone = "919500839097";
-    const text = encodeURIComponent(
-      "Hello TONI&GUY R.S. Puram, I would like to book an appointment."
-    );
-    const waUrl = `https://wa.me/${phone}?text=${text}`;
-
-    ["whatsappBtn", "whatsappSectionBtn"].forEach((id) => {
-      const btn = document.getElementById(id);
-      if (btn) {
-        btn.href = waUrl;
-      }
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function () {
+      navLinks.classList.toggle("open");
     });
 
-    const slides = Array.from(document.querySelectorAll(".hero-slider .slide"));
-    if (slides.length <= 1) return;
-
-    let currentIndex = slides.findIndex((slide) =>
-      slide.classList.contains("active")
-    );
-    if (currentIndex < 0) currentIndex = 0;
-
-    function applySlide(index) {
-      currentIndex = ((index % slides.length) + slides.length) % slides.length;
-      slides.forEach((slide, idx) => {
-        if (idx === currentIndex) {
-          slide.classList.add("active");
-          slide.style.display = "block";
-        } else {
-          slide.classList.remove("active");
-          slide.style.display = "none";
-        }
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
       });
+    });
+  }
+
+  // Hero slider rotation
+  const slides = document.querySelectorAll(".hero-slider .slide");
+  if (slides.length > 1) {
+    let currentSlide = 0;
+    setInterval(function () {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }, 5000);
+  }
+
+  // Category switcher
+  window.showCategory = function (categoryKey, clickedBtn) {
+    document.querySelectorAll(".category-card").forEach(function (btn) {
+      btn.classList.remove("active");
+    });
+
+    document.querySelectorAll(".category-panel").forEach(function (panel) {
+      panel.classList.remove("active");
+    });
+
+    if (clickedBtn) {
+      clickedBtn.classList.add("active");
+    } else {
+      const matchingBtn = document.querySelector('.category-card[data-category="' + categoryKey + '"]');
+      if (matchingBtn) matchingBtn.classList.add("active");
     }
 
-    applySlide(currentIndex);
-
-    setInterval(() => {
-      applySlide(currentIndex + 1);
-    }, 10000);
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initSalonSite);
-  } else {
-    initSalonSite();
-  }
-})();
+    const targetPanel = document.getElementById("cat-" + categoryKey);
+    if (targetPanel) {
+      targetPanel.classList.add("active");
+    }
+  };
+});
