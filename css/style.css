@@ -28,7 +28,7 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 200;
   background-color: #0b0b0c;
   color: #ffffff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -188,66 +188,82 @@ body {
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
 }
 
-/* === Floating Right-Side Action Stack === */
+/* === Fixed Right Stack: 2 Circles + Middle Rectangle ("1k") === */
 .floating-actions {
   position: fixed;
-  right: 16px;
   top: 50%;
+  right: 16px;
   transform: translateY(-50%);
-  z-index: 90;
+  z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
 }
 
-.float-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.floating-actions a,
+.floating-actions a:link,
+.floating-actions a:visited,
+.floating-actions a:hover,
+.floating-actions a:active {
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
-  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.float-btn:hover {
+.float-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.32);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.float-circle:hover {
   transform: translateY(-2px);
+  filter: brightness(1.05);
 }
 
 .float-call {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #34c759;
+  background-color: #22c55e;
   color: #ffffff;
   font-size: 1.35rem;
 }
 
-.float-review {
-  min-width: 56px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  background-color: #202124;
-  color: #e8eaed;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  line-height: 1;
+.float-rect {
+  width: 52px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: #18181b;
+  color: #ffffff;
+  border: 1px solid #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.32);
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.review-count {
-  font-size: 1rem;
+.float-rect:hover {
+  transform: translateY(-2px);
+  border-color: #f3d267;
+}
+
+.float-rect-text {
+  font-size: 0.92rem;
   font-weight: 700;
-  letter-spacing: 0.03em;
-  color: #e8eaed;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #ffffff;
 }
 
 .float-wa {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #25d366;
+  background-color: #16a34a;
   color: #ffffff;
   font-size: 0.85rem;
   font-weight: 800;
+  letter-spacing: 0.03em;
 }
 
 /* === Page Sections === */
@@ -371,5 +387,20 @@ body {
   .floating-actions {
     right: 10px;
     gap: 10px;
+  }
+
+  .float-circle {
+    width: 46px;
+    height: 46px;
+    font-size: 1.15rem;
+  }
+
+  .float-rect {
+    width: 46px;
+    height: 32px;
+  }
+
+  .float-rect-text {
+    font-size: 0.85rem;
   }
 }
