@@ -28,31 +28,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Category switcher
   window.showCategory = function (categoryKey, clickedBtn) {
-    document.querySelectorAll(".category-card").forEach(function (btn) {
-      btn.classList.remove("active");
-    });
+  document.querySelectorAll(".category-card").forEach(function (btn) {
+    btn.classList.remove("active");
+  });
 
-    document.querySelectorAll(".category-panel").forEach(function (panel) {
-      panel.classList.remove("active");
-    });
+  document.querySelectorAll(".category-panel").forEach(function (panel) {
+    panel.classList.remove("active");
+  });
 
-    if (clickedBtn) {
-      clickedBtn.classList.add("active");
-    } else {
-      const matchingBtn = document.querySelector('.category-card[data-category="' + categoryKey + '"]');
-      if (matchingBtn) matchingBtn.classList.add("active");
+  var activeBtn = clickedBtn || document.querySelector('.category-card[data-category="' + categoryKey + '"]');
+  if (activeBtn) {
+    activeBtn.classList.add("active");
+  }
+
+  var targetPanel = document.getElementById("cat-" + categoryKey);
+  if (targetPanel) {
+    targetPanel.classList.add("active");
+    try {
+      targetPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    } catch (err) {
+      targetPanel.scrollIntoView();
     }
-
-    const targetPanel = document.getElementById("cat-" + categoryKey);
-    if (targetPanel) {
-      targetPanel.classList.add("active");
-
-      const navbar = document.querySelector(".navbar");
-      const navOffset = (navbar ? navbar.offsetHeight : 68) + 16;
-      const topPos = targetPanel.getBoundingClientRect().top + window.scrollY - navOffset;
-      window.scrollTo({
-        top: Math.max(0, topPos),
-        behavior: "smooth"
+  }
+};
     }
   };
 });
