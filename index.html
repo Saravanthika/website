@@ -335,29 +335,7 @@
       <img src="images/whatapp.png" alt="WhatsApp" style="width: 100%; height: 100%; object-fit: cover; display: block;">
     </a>
   </aside>
-
-  <script>
-    function showCategory(categoryKey, clickedBtn) {
-      document.querySelectorAll('.category-card').forEach(function(btn) {
-        btn.classList.remove('active');
-      });
-      document.querySelectorAll('.category-panel').forEach(function(panel) {
-        panel.classList.remove('active');
-      });
-      clickedBtn.classList.add('active');
-      var target = document.getElementById('cat-' + categoryKey);
-      if (target) {
-        target.classList.add('active');
-
-        const navbar = document.querySelector(".navbar");
-        const navOffset = (navbar ? navbar.offsetHeight : 68) + 16;
-        const topPos = targetPanel.getBoundingClientRect().top + window.scrollY - navOffset;
-        window.scrollTo({
-          top: Math.max(0, topPos),
-          behavior: "smooth"
-      }
-    }
-  </script>
+  
   <script src="js/main.js?v=6"></script>
 </body>
 </html>
