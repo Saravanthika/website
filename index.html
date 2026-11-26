@@ -348,6 +348,13 @@
       var target = document.getElementById('cat-' + categoryKey);
       if (target) {
         target.classList.add('active');
+
+        const navbar = document.querySelector(".navbar");
+        const navOffset = (navbar ? navbar.offsetHeight : 68) + 16;
+        const topPos = targetPanel.getBoundingClientRect().top + window.scrollY - navOffset;
+        window.scrollTo({
+          top: Math.max(0, topPos),
+          behavior: "smooth"
       }
     }
   </script>
