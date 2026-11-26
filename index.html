@@ -335,7 +335,35 @@
       <img src="images/whatapp.png" alt="WhatsApp" style="width: 100%; height: 100%; object-fit: cover; display: block;">
     </a>
   </aside>
-  
-  <script src="js/main.js?v=6"></script>
+
+  <script>
+    window.showCategory = function (categoryKey, clickedBtn) {
+      var cards = document.querySelectorAll(".category-card");
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].classList.remove("active");
+      }
+
+      var panels = document.querySelectorAll(".category-panel");
+      for (var j = 0; j < panels.length; j++) {
+        panels[j].classList.remove("active");
+      }
+
+      var activeBtn = clickedBtn || document.querySelector('.category-card[data-category="' + categoryKey + '"]');
+      if (activeBtn) {
+        activeBtn.classList.add("active");
+      }
+
+      var targetPanel = document.getElementById("cat-" + categoryKey);
+      if (targetPanel) {
+        targetPanel.classList.add("active");
+        try {
+          targetPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        } catch (err) {
+          targetPanel.scrollIntoView();
+        }
+      }
+    };
+  </script>
+  <script src="js/main.js?v=6"></script> 
 </body>
 </html>
