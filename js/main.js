@@ -46,6 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const targetPanel = document.getElementById("cat-" + categoryKey);
     if (targetPanel) {
       targetPanel.classList.add("active");
+
+      const navbar = document.querySelector(".navbar");
+      const navOffset = (navbar ? navbar.offsetHeight : 68) + 16;
+      const topPos = targetPanel.getBoundingClientRect().top + window.scrollY - navOffset;
+      window.scrollTo({
+        top: Math.max(0, topPos),
+        behavior: "smooth"
     }
   };
 });
