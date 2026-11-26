@@ -359,36 +359,47 @@ body {
   font-size: 0.9rem;
 }
 
-/* Salon Contact, Social Links & Thank You Banner */
+/* Salon Social Buttons & Thank You Banner */
 .salon-social-block {
   margin-top: 22px;
 }
 
-.salon-subhead {
-  margin: 0 0 6px;
-  font-size: 1.05rem;
+.social-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.social-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid #d4d4d4;
+  border-radius: 10px;
+  text-decoration: none;
   font-weight: 700;
-  color: #111111;
+  font-size: 0.98rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
-.salon-spaced-head {
-  margin-top: 22px;
+.social-action-btn:hover {
+  background: #f6f6f6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.salon-contact-line {
-  margin: 0 0 4px;
-  word-break: break-word;
-}
-
-.salon-contact-line a {
-  color: #111111;
-  text-decoration: underline;
-}
-
-.salon-followers {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #333333;
+.social-icon-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
 }
 
 .thank-you-banner {
