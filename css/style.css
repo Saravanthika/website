@@ -312,6 +312,7 @@ body {
 .category-panel {
   display: none;
   margin-top: 24px;
+  scroll-margin-top: 90px;
   background: #ffffff;
   border: 1px solid #e5e5e5;
   border-radius: 12px;
