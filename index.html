@@ -35,7 +35,7 @@
     .category-card::before {
       content: "";
       position: absolute;
-      inset: 0;
+      inset: 0;`
       background: linear-gradient(to top, rgba(10, 10, 10, 0.82) 10%, rgba(10, 10, 10, 0.35) 100%);
       z-index: 0;
       transition: background 0.25s ease;
@@ -90,12 +90,32 @@
     .category-panel.active {
       display: block;
     }
-    .category-panel h3 {
-      margin-top: 0;
+    .panel-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
       margin-bottom: 14px;
-      font-size: 1.25rem;
       border-bottom: 1px solid #eeeeee;
       padding-bottom: 10px;
+    }
+    .category-panel h3 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+    .back-to-cats-btn {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid #d4af37;
+      background: transparent;
+      color: #d4af37;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .back-to-cats-btn:hover {
+      background: #d4af37;
+      color: #111111;
     }
     .service-tags {
       display: flex;
@@ -114,7 +134,7 @@
       border: 1px solid #e2e2e2;
     }
 
-    /* Whole Categories Section Holding Selected Category Picture + Gold Services */
+    /* Whole Categories Section Holding New PNG Picture + Gold Services When Clicked */
     #services.has-category-bg {
       position: relative;
       background-size: cover;
@@ -126,7 +146,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(10, 10, 10, 0.78);
+      background: rgba(10, 10, 10, 0.72);
       z-index: 0;
     }
     #services.has-category-bg > .container {
@@ -138,18 +158,20 @@
       color: #ffffff;
     }
     #services.has-category-bg .category-panel {
-      background: rgba(15, 15, 15, 0.86);
-      border-color: rgba(245, 214, 135, 0.55);
+      background: rgba(15, 15, 15, 0.84);
+      border-color: rgba(245, 214, 135, 0.6);
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+    #services.has-category-bg .panel-header-row {
+      border-bottom-color: rgba(245, 214, 135, 0.35);
     }
     #services.has-category-bg .category-panel h3 {
       color: #f5d687;
-      border-bottom-color: rgba(245, 214, 135, 0.3);
     }
     #services.has-category-bg .service-tags li {
-      background: rgba(245, 214, 135, 0.14);
+      background: rgba(245, 214, 135, 0.16);
       color: #f5d687;
-      border: 1px solid rgba(245, 214, 135, 0.65);
+      border: 1px solid rgba(245, 214, 135, 0.7);
       font-weight: 600;
     }
   </style>
@@ -312,23 +334,23 @@
       <h2>Categories</h2>
       <p>Select a category below to view all available services.</p>
 
-      <div class="category-grid" role="tablist" aria-label="Service Categories">
-        <button type="button" class="category-card cat-hair-bg active" data-category="hair" data-bg="images/haircut.jpg" onclick="showCategory('hair', this)">
+      <div id="categoryCardsGrid" class="category-grid" role="tablist" aria-label="Service Categories">
+        <button type="button" class="category-card cat-hair-bg active" data-category="hair" data-bg="images/hairs.png" onclick="showCategory('hair', this)">
           <h3>Hair</h3>
           <span>Click to view services</span>
         </button>
 
-        <button type="button" class="category-card cat-skin-bg" data-category="skin" data-bg="images/skin.jpg" onclick="showCategory('skin', this)">
+        <button type="button" class="category-card cat-skin-bg" data-category="skin" data-bg="images/skins.png" onclick="showCategory('skin', this)">
           <h3>Skin</h3>
           <span>Click to view services</span>
         </button>
 
-        <button type="button" class="category-card cat-makeup-bg" data-category="makeup" data-bg="images/makeup.jpg" onclick="showCategory('makeup', this)">
+        <button type="button" class="category-card cat-makeup-bg" data-category="makeup" data-bg="images/makeups.png" onclick="showCategory('makeup', this)">
           <h3>Make Up</h3>
           <span>Click to view services</span>
         </button>
 
-        <button type="button" class="category-card cat-chemical-bg" data-category="chemical" data-bg="images/chemical.jpg" onclick="showCategory('chemical', this)">
+        <button type="button" class="category-card cat-chemical-bg" data-category="chemical" data-bg="images/chemicals.png" onclick="showCategory('chemical', this)">
           <h3>Chemical Treatments</h3>
           <span>Click to view services</span>
         </button>
@@ -336,7 +358,10 @@
 
       <!-- Hair Services -->
       <div id="cat-hair" class="category-panel active">
-        <h3>Hair Services</h3>
+        <div class="panel-header-row">
+          <h3>Hair Services</h3>
+          <button type="button" class="back-to-cats-btn" onclick="resetCategoriesView()">All Categories</button>
+        </div>
         <ul class="service-tags">
           <li>Haircut</li>
           <li>Signature Cut</li>
@@ -365,7 +390,10 @@
 
       <!-- Skin Services -->
       <div id="cat-skin" class="category-panel">
-        <h3>Skin Services</h3>
+        <div class="panel-header-row">
+          <h3>Skin Services</h3>
+          <button type="button" class="back-to-cats-btn" onclick="resetCategoriesView()">All Categories</button>
+        </div>
         <ul class="service-tags">
           <li>Facials</li>
           <li>Skin care</li>
@@ -382,7 +410,10 @@
 
       <!-- Make Up Services -->
       <div id="cat-makeup" class="category-panel">
-        <h3>Make Up Services</h3>
+        <div class="panel-header-row">
+          <h3>Make Up Services</h3>
+          <button type="button" class="back-to-cats-btn" onclick="resetCategoriesView()">All Categories</button>
+        </div>
         <ul class="service-tags">
           <li>Make-up</li>
           <li>Make-up services</li>
@@ -396,7 +427,10 @@
 
       <!-- Chemical Treatments -->
       <div id="cat-chemical" class="category-panel">
-        <h3>Chemical Treatments</h3>
+        <div class="panel-header-row">
+          <h3>Chemical Treatments</h3>
+          <button type="button" class="back-to-cats-btn" onclick="resetCategoriesView()">All Categories</button>
+        </div>
         <ul class="service-tags">
           <li>Hair Colour</li>
           <li>Signature Colour</li>
@@ -513,14 +547,19 @@
         activeBtn.classList.add("active");
       }
 
+      var grid = document.getElementById("categoryCardsGrid");
+      if (grid) {
+        grid.style.display = "none";
+      }
+
       var section = document.getElementById("services");
-      var bgMap = {
-        hair: "images/haircut.jpg",
-        skin: "images/skin.jpg",
-        makeup: "images/makeup.jpg",
-        chemical: "images/chemical.jpg"
+      var pngMap = {
+        hair: "images/hairs.png",
+        skin: "images/skins.png",
+        makeup: "images/makeups.png",
+        chemical: "images/chemicals.png"
       };
-      var bgImg = (activeBtn && activeBtn.getAttribute("data-bg")) || bgMap[categoryKey];
+      var bgImg = (activeBtn && activeBtn.getAttribute("data-bg")) || pngMap[categoryKey];
 
       if (section && bgImg) {
         section.style.backgroundImage = 'url("' + bgImg + '")';
@@ -535,6 +574,18 @@
         } catch (err) {
           targetPanel.scrollIntoView();
         }
+      }
+    };
+
+    window.resetCategoriesView = function () {
+      var grid = document.getElementById("categoryCardsGrid");
+      var section = document.getElementById("services");
+      if (grid) {
+        grid.style.display = "";
+      }
+      if (section) {
+        section.style.backgroundImage = "";
+        section.classList.remove("has-category-bg");
       }
     };
   </script>
