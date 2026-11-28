@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TONI&amp;GUY R.S. Puram | Hair &amp; Beauty Salon in Coimbatore</title>
   <meta name="description" content="South India's first TONI&amp;GUY franchise outlet in R.S. Puram, Coimbatore. Located at Lawley Road Junction, Thadagam Main Road above Aaradhana Bakery.">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=18">
   <style>
     .category-grid {
       display: grid;
@@ -578,16 +578,22 @@
     };
 
     window.resetCategoriesView = function () {
-      var grid = document.getElementById("categoryCardsGrid");
-      var section = document.getElementById("services");
-      if (grid) {
-        grid.style.display = "";
-      }
-      if (section) {
-        section.style.backgroundImage = "";
-        section.classList.remove("has-category-bg");
-      }
-    };
+  var grid = document.getElementById("categoryCardsGrid");
+  var section = document.getElementById("services");
+  var panels = document.querySelectorAll(".category-panel");
+
+  for (var j = 0; j < panels.length; j++) {
+    panels[j].classList.remove("active");
+  }
+
+  if (grid) {
+    grid.style.display = "";
+  }
+  if (section) {
+    section.style.backgroundImage = "";
+    section.classList.remove("has-category-bg");
+  }
+};
   </script>
   <script src="js/main.js?v=6"></script> 
 </body>
