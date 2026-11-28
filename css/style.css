@@ -1170,19 +1170,19 @@ body {
 }
 
 .category-card.cat-hair-bg {
-  background-image: url("../images/hairs.png") !important;
+  background-image: url("../images/haircut.jpg") !important;
 }
 
 .category-card.cat-skin-bg {
-  background-image: url("../images/skins.png") !important;
+  background-image: url("../images/skin.jpg") !important;
 }
 
 .category-card.cat-makeup-bg {
-  background-image: url("../images/makeups.png") !important;
+  background-image: url("../images/makeup.jpg") !important;
 }
 
 .category-card.cat-chemical-bg {
-  background-image: url("../images/chemicals.png") !important;
+  background-image: url("../images/chemical.jpg") !important;
 }
 
 .spotlight-hero-img {
