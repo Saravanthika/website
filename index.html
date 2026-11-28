@@ -113,6 +113,45 @@
       font-size: 0.92rem;
       border: 1px solid #e2e2e2;
     }
+
+    /* Whole Categories Section Holding Selected Category Picture + Gold Services */
+    #services.has-category-bg {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #ffffff;
+    }
+    #services.has-category-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.78);
+      z-index: 0;
+    }
+    #services.has-category-bg > .container {
+      position: relative;
+      z-index: 1;
+    }
+    #services.has-category-bg h2,
+    #services.has-category-bg > .container > p {
+      color: #ffffff;
+    }
+    #services.has-category-bg .category-panel {
+      background: rgba(15, 15, 15, 0.86);
+      border-color: rgba(245, 214, 135, 0.55);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    }
+    #services.has-category-bg .category-panel h3 {
+      color: #f5d687;
+      border-bottom-color: rgba(245, 214, 135, 0.3);
+    }
+    #services.has-category-bg .service-tags li {
+      background: rgba(245, 214, 135, 0.14);
+      color: #f5d687;
+      border: 1px solid rgba(245, 214, 135, 0.65);
+      font-weight: 600;
+    }
   </style>
 </head>
   <script>
@@ -192,9 +231,9 @@
           <span class="train-engine-badge">T&amp;G</span>
         </div>
         <div class="train-car">RS PURAM TONI &amp; GUY</div>
-       <div class="train-car train-car-accent">SINCE 2014 &middot; R.S. PURAM</div>
-      <div class="train-car">RS PURAM TONI &amp; GUY</div>
-    </div> 
+        <div class="train-car train-car-accent">SINCE 2013</div>
+        <div class="train-car">RS PURAM TONI &amp; GUY</div>
+      </div>
 
       <div class="train-set">
         <div class="train-engine">
@@ -202,8 +241,8 @@
           <span class="train-engine-badge">T&amp;G</span>
         </div>
         <div class="train-car">RS PURAM TONI &amp; GUY</div>
+        <div class="train-car train-car-accent">SINCE 2013</div>
         <div class="train-car">RS PURAM TONI &amp; GUY</div>
-        <div class="train-car train-car-accent">SINCE 2014 &middot; R.S. PURAM</div>
       </div>
     </div>
   </div>
@@ -268,76 +307,34 @@
     </div>
   </section>
 
-<section id="services" class="section section-alt">
+  <section id="services" class="section section-alt">
     <div class="container">
       <h2>Categories</h2>
       <p>Select a category below to view all available services.</p>
 
-      <!-- Big Featured Banner (Appears When a Category Is Clicked, Replacing the 4-Card Grid) -->
-      <div class="category-spotlight" id="categorySpotlight" hidden>
-        <div class="spotlight-hero">
-          <img id="spotlightImg" src="images/hairs.png" alt="Hair Services" class="spotlight-hero-img" />
-          <div class="spotlight-hero-overlay"></div>
-          <div class="spotlight-hero-content">
-            <h3 id="spotlightTitle" class="spotlight-big-headline">Hair Services</h3>
-            <button type="button" id="backToCategoriesBtn" class="spotlight-back-btn">
-              &larr; All Categories
-            </button>
-          </div>
-        </div>
-
-        <div class="spotlight-gold-services">
-          <ul id="spotlightServicesList" class="gold-service-list"></ul>
-        </div>
-      </div>
-
-      <div class="category-grid" id="categoryCardsGrid" role="tablist" aria-label="Service Categories">
-        <button
-          type="button"
-          class="category-card cat-hair-bg active"
-          data-category="hair"
-          data-img="images/hairs.png"
-          onclick="showCategory('hair', this)"
-        >
+      <div class="category-grid" role="tablist" aria-label="Service Categories">
+        <button type="button" class="category-card cat-hair-bg active" data-category="hair" data-bg="images/haircut.jpg" onclick="showCategory('hair', this)">
           <h3>Hair</h3>
           <span>Click to view services</span>
         </button>
 
-        <button
-          type="button"
-          class="category-card cat-skin-bg"
-          data-category="skin"
-          data-img="images/skins.png"
-          onclick="showCategory('skin', this)"
-        >
+        <button type="button" class="category-card cat-skin-bg" data-category="skin" data-bg="images/skin.jpg" onclick="showCategory('skin', this)">
           <h3>Skin</h3>
           <span>Click to view services</span>
         </button>
 
-        <button
-          type="button"
-          class="category-card cat-makeup-bg"
-          data-category="makeup"
-          data-img="images/makeups.png"
-          onclick="showCategory('makeup', this)"
-        >
+        <button type="button" class="category-card cat-makeup-bg" data-category="makeup" data-bg="images/makeup.jpg" onclick="showCategory('makeup', this)">
           <h3>Make Up</h3>
           <span>Click to view services</span>
         </button>
 
-        <button
-          type="button"
-          class="category-card cat-chemical-bg"
-          data-category="chemical"
-          data-img="images/chemicals.png"
-          onclick="showCategory('chemical', this)"
-        >
+        <button type="button" class="category-card cat-chemical-bg" data-category="chemical" data-bg="images/chemical.jpg" onclick="showCategory('chemical', this)">
           <h3>Chemical Treatments</h3>
           <span>Click to view services</span>
         </button>
       </div>
-      
- <!-- Hair Services -->
+
+      <!-- Hair Services -->
       <div id="cat-hair" class="category-panel active">
         <h3>Hair Services</h3>
         <ul class="service-tags">
@@ -360,6 +357,8 @@
           <li>Hair &amp; Scalp</li>
           <li>Hair Treatment</li>
           <li>Hairspa Treatment</li>
+          <li>Hair Salons</li>
+          <li>Hairdressing Salons</li>
           <li>Hair And Fashion</li>
         </ul>
       </div>
@@ -414,14 +413,14 @@
       </div>
     </div>
   </section>
-  
- <section id="reviews" class="section">
+
+  <section id="reviews" class="section">
     <div class="container">
       <h2>Client Reviews</h2>
       <p>Rated 4.5 stars across 1k+ Google reviews from clients across R.S. Puram and Coimbatore.</p>
     </div>
-  </section> 
-  
+  </section>
+
   <section id="location" class="section section-alt">
     <div class="container">
       <h2>Visit Our Salon</h2>
@@ -512,6 +511,20 @@
       var activeBtn = clickedBtn || document.querySelector('.category-card[data-category="' + categoryKey + '"]');
       if (activeBtn) {
         activeBtn.classList.add("active");
+      }
+
+      var section = document.getElementById("services");
+      var bgMap = {
+        hair: "images/haircut.jpg",
+        skin: "images/skin.jpg",
+        makeup: "images/makeup.jpg",
+        chemical: "images/chemical.jpg"
+      };
+      var bgImg = (activeBtn && activeBtn.getAttribute("data-bg")) || bgMap[categoryKey];
+
+      if (section && bgImg) {
+        section.style.backgroundImage = 'url("' + bgImg + '")';
+        section.classList.add("has-category-bg");
       }
 
       var targetPanel = document.getElementById("cat-" + categoryKey);
