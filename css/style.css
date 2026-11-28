@@ -1168,3 +1168,35 @@ body {
     font-size: 0.72rem !important;
   }
 }
+
+.category-card.cat-hair-bg {
+  background-image: url("../images/hairs.png") !important;
+}
+
+.category-card.cat-skin-bg {
+  background-image: url("../images/skins.png") !important;
+}
+
+.category-card.cat-makeup-bg {
+  background-image: url("../images/makeups.png") !important;
+}
+
+.category-card.cat-chemical-bg {
+  background-image: url("../images/chemicals.png") !important;
+}
+
+.spotlight-hero-img {
+  width: 100% !important;
+  height: 360px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+@media (max-width: 768px) {
+  .spotlight-hero,
+  .spotlight-hero-img {
+    min-height: 230px !important;
+    height: 240px !important;
+  }
+}
